@@ -8,5 +8,6 @@ namespace TSB100AzureApp1.Models
     public class StatsPageViewModel
     {
         public string ServiceOnline { get; set; }
+        public IDictionary<string, int> UserCityStats { get; set; }
     }
 }

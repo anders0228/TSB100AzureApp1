@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TSB100AzureApp1.Logic;
 using TSB100AzureApp1.Models;
+using TSB100AzureApp1.UserProfileServiceReference;
 
 namespace TSB100AzureApp1.Controllers
 {
@@ -12,6 +14,7 @@ namespace TSB100AzureApp1.Controllers
         public ActionResult Index()
         {
             var viewModel = new StatsPageViewModel();
+
             using (var client = new UserProfileServiceReference.UserProfileServiceClient())
             {
 
@@ -28,6 +31,10 @@ namespace TSB100AzureApp1.Controllers
                 //    ServiceOnline = client.IsAlive() ? "service online" : "service offline";
                 //}
 
+                var users = client.GetAllUsers();
+                var stats = new UserStatistics();
+                viewModel.UserCityStats = stats.GetUserCityStats(users);
+
             }
             return View(viewModel);
         }
@@ -39,11 +46,7 @@ namespace TSB100AzureApp1.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
+
     }
 }

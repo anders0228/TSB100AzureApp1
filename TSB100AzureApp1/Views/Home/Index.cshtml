@@ -1,7 +1,26 @@
 ﻿@model TSB100AzureApp1.Models.StatsPageViewModel
-<div class="row">
-    <div class="col-md-4">
-        <h1>Hem</h1>
-        <h2>@Model.ServiceOnline</h2>
-    </div>
-</div>
+
+@{
+    ViewBag.Title = "Användarstatistik";
+}
+
+<h2>Antal användare per stad</h2>
+<br />
+<table class="table">
+    <tr>
+        <th>Stad</th>
+        <th>Antal användare</th>
+    </tr>
+
+@foreach (var item in Model.UserCityStats) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Key)
+        </td>
+        <td>
+            @{ var unit = item.Value == 1 ? "person" : "personer"; }
+                @Html.DisplayFor(modelItem => item.Value) @unit
+        </td>
+    </tr>
+}
+</table>

@@ -10,29 +10,13 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-
-
             <div class="col-12">
                 <div class="header row">
                     <div class="col-md-9 col-sm-12">
                         <img alt="Finder" src="//i.imgur.com/YHlSO2T.png" style="max-width: 100% ;
          min-height: 53px ; cursor:pointer" onclick="window.location = '/';" />
                     </div>
-
                 </div>
-                <div class="col-sm-12 ">
-                    <div class="input-group mb-3">
-                        @using (Html.BeginForm("Search", "Service", FormMethod.Post, new { id = "searchForm" }))
-                        {
-                            <input type="text" class="form-control" id="searchString" name="searchString" placeholder=" Search.." aria-label="" aria-describedby="basic-addon1">
-                        }
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" onclick="submitSearch()" type="button">Button</button>
-                        </div>
-
-                    </div>
-                </div>
-
             </div>
             <div class="col-12">
                 <div class="line"> </div>
@@ -45,10 +29,11 @@
         </div>
     </div>
     <div class="container body-content">
+        <br />
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer class="footerMargin">
+            <p>@DateTime.Now.Year - UserProfileStatistics</p>
         </footer>
     </div>
 
