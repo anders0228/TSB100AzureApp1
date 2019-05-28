@@ -8,22 +8,39 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div class="container-fluid">
+        <div class="row">
+
+
+            <div class="col-12">
+                <div class="header row">
+                    <div class="col-md-9 col-sm-12">
+                        <img alt="Finder" src="//i.imgur.com/YHlSO2T.png" style="max-width: 100% ;
+         min-height: 53px ; cursor:pointer" onclick="window.location = '/';" />
+                    </div>
+
+                </div>
+                <div class="col-sm-12 ">
+                    <div class="input-group mb-3">
+                        @using (Html.BeginForm("Search", "Service", FormMethod.Post, new { id = "searchForm" }))
+                        {
+                            <input type="text" class="form-control" id="searchString" name="searchString" placeholder=" Search.." aria-label="" aria-describedby="basic-addon1">
+                        }
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" onclick="submitSearch()" type="button">Button</button>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <div class="col-12">
+                <div class="line"> </div>
+                <div class="header-bottom">
+                    @Html.ActionLink("Hem", "Index", "Home")
+                    @Html.ActionLink("Statistik", "Index", "Statistics")
+                </div>
+                <div class="line"> </div>
             </div>
         </div>
     </div>
